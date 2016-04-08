@@ -177,6 +177,7 @@ define([
             content.push(baseSpacing + '- id: ' + this.location.get('name'));
 
             baseSpacing += '  ';
+            content.push(baseSpacing + 'displayName: ' + this.location.get('displayName'));
             content.push(baseSpacing + 'itemType: location');
             content.push(baseSpacing + 'item:');
 
@@ -483,7 +484,7 @@ define([
             }
 
             var value = '';
-            if (_.contains(['name', 'spec'], field.id)) {
+            if (_.contains(['name', 'spec', 'displayName'], field.id)) {
                 value = this.wizard.location.get(field.id);
             } else {
                 value = this.wizard.location.get('config')[field.id];
@@ -565,7 +566,7 @@ define([
 
             // Update the location object based on the field values
             if ($elm.val() !== '') {
-                if (_.contains(['name', 'spec'], $elm.attr('name'))) {
+                if (_.contains(['name', 'spec', 'displayName'], $elm.attr('name'))) {
                     this.wizard.location.set($elm.attr('name'), $elm.val());
                 } else if ($elm.attr('name') === 'spec-other') {
                     this.wizard.location.set('spec', $elm.val());

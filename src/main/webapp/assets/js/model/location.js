@@ -26,6 +26,7 @@ define(["underscore", "backbone"], function (_, Backbone) {
             return {
                 name:'',
                 spec:'',
+                displayName: '',
                 config:{}
             }
         },
@@ -65,6 +66,8 @@ define(["underscore", "backbone"], function (_, Backbone) {
             var name = null;
             if (this.get('config') && this.get('config')['displayName'])
                 name = this.get('config')['displayName'];
+            if (name!=null && name.length>0) return name
+            name = this.get['displayName'];
             if (name!=null && name.length>0) return name
             name = this.get('name')
             if (name!=null && name.length>0) return name
